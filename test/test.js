@@ -1,7 +1,11 @@
 var expect = require('chai').expect
   , assert = require('chai').assert
-  , User = require('../lib/models/user').model;
+  , Refuge = require('../lib-cov/refuge');
 
-assert(User !== undefined, 'User should be present');
-
-
+describe('Refuge', function () {
+	describe('sanity checks', function () {
+		it('should be present', function () {
+			expect(Refuge).to.exist;
+		});
+	});
+});

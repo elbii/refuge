@@ -1,3 +1,3 @@
-module.exports = process.env.COV ?
+module.exports = process.env.REFUGE_COV ?
   require('./lib-cov/refuge') :
   require('./lib/refuge');
