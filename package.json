@@ -1,10 +1,14 @@
 {
   "name": "refuge",
-  "main": "app",
+  "main": "./index",
+  "author": "Jamil Bou Kheir <jamil@elbii.com>",
   "description": "Open-source web-based password manager",
   "version": "0.0.1",
   "scripts": {
     "start": "node app"
+  },
+  "bin": {
+    "refuge": "./bin/refuge"
   },
   "repository": {
     "type": "git",
