@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+ssh jamil@74.207.253.173 '\
+  cd /var/www/refuge.pw && \
+  git pull && \
+  npm install && \
+  bower install && \
+  killall node || \
+  NODE_ENV=production nohup node server &\
+'

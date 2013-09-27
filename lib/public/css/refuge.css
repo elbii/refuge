@@ -1,0 +1,21 @@
+.password-strength-weak {
+  width: 33px;
+  height: 5px;
+  background-color: red;
+}
+
+.password-strength-medium {
+  width: 66px;
+  height: 5px;
+  background-color: orange;
+}
+
+.password-strength-strong {
+  width: 100px;
+  height: 5px;
+  background-color: green;
+}
+
+a:hover {
+  cursor: pointer;
+}

@@ -1,0 +1,20 @@
+{
+  "name": "refuge",
+  "version": "0.0.1",
+  "dependencies": {
+    "requirejs-text": "~2.0.6",
+    "requirejs": "~2.1.6",
+    "backbone": "~1.0.x",
+    "jquery": "~2.0.x",
+    "bootstrap": "~3.0.x",
+    "jQuery.serializeObject": "*",
+    "underscore": "~1.4.4",
+    "underscore.string": "*",
+    "sjcl": "*"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ]
+}

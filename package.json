@@ -1,0 +1,27 @@
+{
+  "name": "Refuge",
+  "main": "app",
+  "description": "Open-source web-based password manager",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "node app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elbii/refuge.git"
+  },
+  "dependencies": {
+    "express": "*",
+    "bcrypt": "*",
+    "hiredis": "*",
+    "connect-redis": "*",
+    "mongoose": "*"
+  },
+  "devDependencies": {
+    "supertest": "*",
+    "nodemon": "*",
+    "mocha": "*",
+    "sinon": "*",
+    "chai": "*"
+  }
+}
