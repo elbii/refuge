@@ -1,4 +1,6 @@
 refuge
 ======
 
-Refuge password keeper
+Refuge password manager
+
+
