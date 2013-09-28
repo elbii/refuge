@@ -3,7 +3,7 @@ test-leaks:
 
 test-jenkins-xunit:
 	NODE_ENV=test ./node_modules/mocha/bin/mocha --check-leaks -R xunit > \
-					 "$WORKSPACE/results/Refuge_Test_Suite_$BUILD_NUMBER.xml"
+					 \$WORKSPACE/results/Refuge_Test_Suite_\$BUILD_NUMBER.xml
 
 test-jenkins-html-cov: cov
 	REFUGE_COV=1 NODE_ENV=test ./node_modules/mocha/bin/mocha --reporter html-cov \
