@@ -23,7 +23,6 @@
   },
   "devDependencies": {
     "istanbul": "*",
-    "bower": "*",
     "supertest": "*",
     "nodemon": "*",
     "mocha": "*",
