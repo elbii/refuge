@@ -1,6 +1,6 @@
 var expect = require('chai').expect
   , assert = require('chai').assert
-  , Refuge = require('../lib-cov/refuge');
+  , Refuge = require('../lib/refuge');
 
 describe('Refuge', function () {
 	describe('sanity checks', function () {
