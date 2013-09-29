@@ -1,9 +1,17 @@
+install: npm-install bower-install
+
 test:
 	NODE_ENV=test ./node_modules/mocha/bin/mocha --check-leaks
 
 test-xunit:
 	NODE_ENV=test ./node_modules/mocha/bin/mocha --check-leaks -R xunit > \
 		$$WORKSPACE/$BUILD_NUMBER_results.xml
+
+npm-install:
+	npm install
+
+bower-install:
+	./node_modules/bower/bin/bower install
 
 cov:
 	NODE_ENV=test ./node_modules/istanbul/lib/cli.js cover \
