@@ -1,22 +1,15 @@
-test-leaks:
+test:
 	NODE_ENV=test ./node_modules/mocha/bin/mocha --check-leaks
 
-test-jenkins-xunit:
+test-xunit:
 	NODE_ENV=test ./node_modules/mocha/bin/mocha --check-leaks -R xunit > \
-					 $$WORKSPACE/results/Refuge_Test_Suite_$$BUILD_NUMBER.xml
-
-test-jenkins-html-cov: cov
-	REFUGE_COV=1 NODE_ENV=test ./node_modules/mocha/bin/mocha --reporter html-cov \
-		--check-leaks > coverage.html
-
-test-html-cov: cov test-jenkins-html-cov
-	open coverage.html
-
-clean:
-	rm -rf lib-cov
-	rm coverage.html
-	rm -rf node_modules
-	rm -rf lib/public/js/vendor
+		$$WORKSPACE/$BUILD_NUMBER_results.xml
 
 cov:
-	jscoverage --no-highlight --no-instrument=public/js/vendor lib lib-cov
+	NODE_ENV=test ./node_modules/istanbul/lib/cli.js cover \
+		./node_modules/mocha/bin/_mocha -- --check-leaks -R spec
+
+clean:
+	rm -rf coverage
+	rm -rf node_modules
+	rm -rf lib/public/js/vendor

@@ -17,3 +17,4 @@ npm-debug.log
 /components
 /lib/public/js/vendor
 coverage.html
+/coverage
