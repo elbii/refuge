@@ -3,6 +3,9 @@ install: npm-install bower-install
 test-all:
 	NODE_ENV=test ./node_modules/mocha/bin/mocha --check-leaks
 
+test-watch:
+	NODE_ENV=test ./node_modules/mocha/bin/mocha --check-leaks --watch
+
 test-xunit:
 	NODE_ENV=test ./node_modules/mocha/bin/mocha --check-leaks -R xunit > \
 		$$WORKSPACE/$$BUILD_NUMBER_results.xml
