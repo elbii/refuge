@@ -1,8 +1,13 @@
 var assert = require('chai').assert
-	, Refuge = require('../lib/refuge');
+  , request = require('supertest')
+	, app = require('../lib/refuge').app;
 
-describe('sanity checks', function () {
-	it('should be present', function () {
-		assert.typeOf(Refuge, 'object', 'App should be defined');
-	});
+describe('index', function () {
+  it('responds with html', function (done) {
+    request(app).
+      get('/').
+      set('Accept', 'text/html').
+      expect('Content-Type', /html/).
+      expect(200, done);
+  });
 });
