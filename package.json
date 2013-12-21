@@ -26,6 +26,7 @@
     "supertest": "*",
     "nodemon": "*",
     "mocha": "*",
+    "mocha-phantomjs": "*",
     "sinon": "*",
     "chai": "*"
   }
