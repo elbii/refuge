@@ -28,6 +28,7 @@
     "mocha": "*",
     "mocha-phantomjs": "*",
     "sinon": "*",
-    "chai": "*"
+    "chai": "*",
+    "chance": "*"
   }
 }

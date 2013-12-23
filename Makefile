@@ -1,13 +1,15 @@
 install: npm-install bower-install
 
+test: test-all
+
 test-all:
-	NODE_ENV=test ./node_modules/mocha/bin/mocha --check-leaks
+	PORT=4000 NODE_ENV=test ./node_modules/mocha/bin/mocha --check-leaks
 
 test-watch:
-	NODE_ENV=test ./node_modules/mocha/bin/mocha --check-leaks --watch
+	PORT=4000 NODE_ENV=test ./node_modules/mocha/bin/mocha --check-leaks --watch
 
 test-xunit:
-	NODE_ENV=test ./node_modules/mocha/bin/mocha --check-leaks -R xunit > \
+	PORT=4000 NODE_ENV=test ./node_modules/mocha/bin/mocha --check-leaks -R xunit > \
 		$$WORKSPACE/$$BUILD_NUMBER_results.xml
 
 npm-install:
@@ -17,7 +19,7 @@ bower-install:
 	bower install
 
 cov:
-	NODE_ENV=test ./node_modules/istanbul/lib/cli.js cover \
+	PORT=4000 NODE_ENV=test ./node_modules/istanbul/lib/cli.js cover \
 		./node_modules/mocha/bin/_mocha -- --check-leaks -R spec
 
 clean:
