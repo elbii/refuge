@@ -5,7 +5,7 @@
   "description": "Open-source web-based password manager",
   "version": "0.0.1",
   "scripts": {
-    "start": "node app"
+    "start": "node index"
   },
   "bin": {
     "refuge": "./bin/refuge"
@@ -15,6 +15,7 @@
     "url": "https://github.com/elbii/refuge.git"
   },
   "dependencies": {
+    "validator": "*",
     "express": "*",
     "bcrypt": "*",
     "hiredis": "*",

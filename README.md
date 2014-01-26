@@ -1,6 +1,8 @@
-refuge
+Refuge
 ======
 
-Refuge password manager
+Open-source web-based password management.
+
+Still protoyping. Stay tuned!
 
 

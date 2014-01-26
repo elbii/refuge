@@ -1,51 +1,50 @@
 var assert = require('chai').assert
-  , request = require('supertest')
-  , app = require('../lib/refuge').app
+  , Request = require('supertest')
+  , App = require('../lib/refuge').app
   , Chance = require('chance')
   , User = require('../lib/models/user').model
-  , Good = require('../lib/models/good').model
-  , Session = require('../lib/models/session').model
+  , Credential = require('../lib/models/credential').model
   , mongoose = require('mongoose')
-  , connection = mongoose.createConnection('localhost', 'refuge_test');
+  , connection = mongoose.createConnection('localhost',
+    'refuge_' + (process.env.NODE_ENV || 'test'));
 
-describe('goods', function () {
+describe('credentials', function () {
   describe('signed in', function () {
-    var chance = new Chance()
-      , user = new User({ email: chance.email(), password: 'password' })
-      , otherUser = new User({ email: chance.email(), password: 'password' })
-      , userSession = request.agent(app)
-      , otherUserSession = request.agent(app)
-      , goodId, good;
+    var credential
+      , credentialId
+      , chance = new Chance()
+      , myCreds = { email: chance.email(), password: chance.string(64) }
+      , otherCreds = { email: chance.email(), password: chance.string(64) }
+      , myUser = new User(myCreds)
+      , otherUser = new User(otherCreds)
+      , mySession = Request.agent(App)
+      , otherSession = Request.agent(App);
+
 
     before(function (done) {
-      // reset users and sign in
       connection.db.dropDatabase(done);
     });
 
     before(function (done) {
-      user.save(done);
+      myUser.save(function () {
+        mySession.
+          post('/sessions').
+          send(myCreds).
+          end(done);
+      });
     });
 
     before(function (done) {
-      userSession.
-        post('/sessions').
-        send({ email: user.email, password: 'password' }).
-        end(done);
-    });
-
-    before(function (done) {
-      otherUser.save(done);
-    });
-
-    before(function (done) {
-      otherUserSession.
-        post('/sessions').
-        send({ email: otherUser.email, password: 'password' }).
-        end(done);
+      otherUser.save(function () {
+        otherSession.
+          post('/sessions').
+          send(otherCreds).
+          end(done);
+      });
     });
 
     describe('create', function () {
-      good = new Good({
+      credential = new Credential({
         data: {
           login: 'test@test.com',
           password: 'password'
@@ -55,17 +54,16 @@ describe('goods', function () {
         tags: [ 'foo', 'bar' ]
       });
 
-      it('should create a new good', function (done) {
-        userSession.
-          post('/goods').
-          send(good).
+      it('should create a new credential', function (done) {
+        mySession.
+          post('/credentials').
+          send(credential).
           set('X-Requested-With', 'XMLHttpRequest').
           set('Accept', 'application/json').
           end(function (err, res) {
             assert.equal(res.status, 200, 'success');
-            assert.isDefined(res.body._id, 'created successfully');
-            assert.equal(user.id, res.body.user_id, 'matches user');
-            goodId = res.body._id;
+            assert.isDefined(res.body._id, '_id returned');
+            credentialId = res.body._id;
             done();
           });
       });
@@ -73,13 +71,13 @@ describe('goods', function () {
 
     describe('show', function () {
       it('should retrieve one', function (done) {
-        userSession.
-          get('/goods/' + goodId).
+        mySession.
+          get('/credentials/' + credentialId).
           set('X-Requested-With', 'XMLHttpRequest').
           set('Accept', 'application/json').
           end(function (err, res) {
             assert.equal(res.status, 200, 'success');
-            assert.equal(res.body.title, good.title, 'titles match');
+            assert.equal(res.body.title, credential.title, 'titles match');
             done();
           });
       });
@@ -87,8 +85,8 @@ describe('goods', function () {
 
     describe('index', function () {
       it('should retrieve list', function (done) {
-        userSession.
-          get('/goods').
+        mySession.
+          get('/credentials').
           set('X-Requested-With', 'XMLHttpRequest').
           set('Accept', 'application/json').
           end(function (err, res) {
@@ -101,8 +99,8 @@ describe('goods', function () {
 
     describe('update', function () {
       it('for others', function (done) {
-        otherUserSession.
-          patch('/goods/' + goodId).
+        otherSession.
+          patch('/credentials/' + credentialId).
           send({ title: 'changed title', data: { malicious: 'data' }}).
           set('X-Requested-With', 'XMLHttpRequest').
           set('Accept', 'application/json').
@@ -115,8 +113,8 @@ describe('goods', function () {
 
     describe('update', function () {
       it('for owner', function (done) {
-        userSession.
-          patch('/goods/' + goodId).
+        mySession.
+          patch('/credentials/' + credentialId).
           send({ title: 'changed title', data: { changed: 'data' }}).
           set('X-Requested-With', 'XMLHttpRequest').
           set('Accept', 'application/json').
@@ -130,8 +128,8 @@ describe('goods', function () {
 
     describe('destroy', function () {
       it('for others', function (done) {
-        otherUserSession.
-          del('/goods/' + goodId).
+        otherSession.
+          del('/credentials/' + credentialId).
           set('X-Requested-With', 'XMLHttpRequest').
           set('Accept', 'application/json').
           end(function (err, res) {
@@ -143,8 +141,8 @@ describe('goods', function () {
 
     describe('destroy', function () {
       it('for owner', function (done) {
-        userSession.
-          del('/goods/' + goodId).
+        mySession.
+          del('/credentials/' + credentialId).
           set('X-Requested-With', 'XMLHttpRequest').
           set('Accept', 'application/json').
           end(function (err, res) {
@@ -153,19 +151,32 @@ describe('goods', function () {
           });
       });
     });
+
+    describe('destroy', function () {
+      it('for owner after destroyed', function (done) {
+        mySession.
+          del('/credentials/' + credentialId).
+          set('X-Requested-With', 'XMLHttpRequest').
+          set('Accept', 'application/json').
+          end(function (err, res) {
+            assert.equal(res.status, 404, 'not found');
+            done();
+          });
+      });
+    });
   });
 
   describe('not signed in', function () {
     describe('index', function () {
-      it('should not list goods', function (done) {
-        request(app).
-          get('/goods').
+      it('should not list credentials', function (done) {
+        Request.agent(App).
+          get('/credentials').
           set('X-Requested-With', 'XMLHttpRequest').
           set('Accept', 'application/json').
           end(function (err, res) {
             assert.equal(res.status, 403, 'forbidden');
             assert.equal(res.type, 'application/json', 'json');
-            assert.deepEqual(res.body, { message: 'Not signed in.' });
+            assert.deepEqual(res.body, { message: 'Not signed in' });
             done();
           });
       });
