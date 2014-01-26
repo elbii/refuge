@@ -13,8 +13,13 @@ describe('credentials', function () {
     var credential
       , credentialId
       , chance = new Chance()
-      , myCreds = { email: chance.email(), password: chance.string(64) }
-      , otherCreds = { email: chance.email(), password: chance.string(64) }
+      , myCreds = {
+        email: chance.email(),
+        password: chance.string({ length: 9 })
+      }
+      , otherCreds = {
+        email: chance.email(),
+        password: chance.string({ length: 9 }) }
       , myUser = new User(myCreds)
       , otherUser = new User(otherCreds)
       , mySession = Request.agent(App)

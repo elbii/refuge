@@ -21,12 +21,12 @@ describe('users', function () {
   describe('post', function () {
     validUser = new User({
       email: chance.email(),
-      password: chance.string(10)
+      password: chance.string({ length: 9 })
     });
 
     invalidUserEmail = new User({
       email: 'foobar',
-      password: chance.string(10)
+      password: chance.string({ length: 9 })
     });
 
     invalidUserPassword = new User({
@@ -77,7 +77,10 @@ describe('users', function () {
   });
 
   describe('get', function () {
-    var myCreds = { email: chance.email(), password: chance.string(10) }
+    var myCreds = {
+        email: chance.email(),
+        password: chance.string({ length: 9 })
+      }
       , myUser = new User(myCreds)
       , mySession = Request.agent(App);
 
