@@ -70,7 +70,7 @@ describe('credentials', function () {
     });
 
     describe('show', function () {
-      it('should retrieve one', function (done) {
+      it('should retrieve one that exists', function (done) {
         mySession.
           get('/credentials/' + credentialId).
           set('X-Requested-With', 'XMLHttpRequest').
@@ -78,6 +78,18 @@ describe('credentials', function () {
           end(function (err, res) {
             assert.equal(res.status, 200, 'success');
             assert.equal(res.body.title, credential.title, 'titles match');
+            done();
+          });
+      });
+
+      it('should not retrieve non-existing one', function (done) {
+        mySession.
+          get('/credentials/blahId').
+          set('X-Requested-With', 'XMLHttpRequest').
+          set('Accept', 'application/json').
+          end(function (err, res) {
+            assert.equal(res.status, 500, 'server error');
+            assert.isUndefined(res.body.title, 'no credential returned');
             done();
           });
       });
