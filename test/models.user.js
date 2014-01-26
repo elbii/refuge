@@ -10,91 +10,117 @@ describe('user', function () {
         email: email,
         password: password
       }
-    , invalidEmail = {
-        email: 'foobar',
-        password: password
-      }
-    , invalidPassword = {
-        email: email,
-        password: 'tooshor'
-      }
-    , undefinedEmail = {
-        email: undefined,
-        password: password
-      }
-    , nullEmail = {
-        email: null,
-        password: password
-      }
-    , blankEmail = {
-        email: '',
-        password: password
-      }
-    , blankPassword = {
-        email: email,
-        password: ''
-      }
     , user;
 
-  it('catches invalid emails', function (done) {
-    user = new User(invalidEmail);
-    user.save(function (err, user) {
-      assert.equal(err.message, 'Validation failed');
-      assert.isDefined(err.errors.email);
-      done();
+  describe('password should not change', function () {
+    it('save valid user', function (done) {
+      user = new User(valid);
+      user.save(function (err, user) {
+        assert.isDefined(user._id);
+        done();
+      });
+    });
+
+    it('saves without changing password', function (done) {
+      var prevHash = user.password;
+
+      user.save(function (err, user) {
+        assert.isNull(err);
+        assert.equal(user.password, prevHash);
+        done();
+      });
+    });
+
+    it('rehashes password when changed', function (done) {
+      var prevHash = user.password;
+      user.set({ password: chance.string({ length: 9 }) });
+
+      user.save(function (err, user) {
+        assert.isNull(err);
+        assert.notEqual(user.password, prevHash);
+        done();
+      });
     });
   });
 
-  it('catches invalid passwords', function (done) {
-    user = new User(invalidPassword);
-    user.save(function (err, user) {
-      assert.equal(err.message, 'Validation failed');
-      assert.isDefined(err.errors.password);
-      done();
-    });
-  });
+  describe('validations', function () {
+    var invalidEmail = {
+          email: 'foobar',
+          password: password
+        }
+      , invalidPassword = {
+          email: email,
+          password: 'tooshor'
+        }
+      , undefinedEmail = {
+          email: undefined,
+          password: password
+        }
+      , nullEmail = {
+          email: null,
+          password: password
+        }
+      , blankEmail = {
+          email: '',
+          password: password
+        }
+      , blankPassword = {
+          email: email,
+          password: ''
+        };
 
-  it('catches undefined emails', function (done) {
-    user = new User(undefinedEmail);
-    user.save(function (err, user) {
-      assert.equal(err.message, 'Validation failed');
-      assert.isDefined(err.errors.email);
-      done();
+    it('catches invalid emails', function (done) {
+      user = new User(invalidEmail);
+      user.save(function (err, user) {
+        assert.equal(err.message, 'Validation failed');
+        assert.isDefined(err.errors.email);
+        done();
+      });
     });
-  });
 
-  it('catches null emails', function (done) {
-    user = new User(nullEmail);
-    user.save(function (err, user) {
-      assert.equal(err.message, 'Validation failed');
-      assert.isDefined(err.errors.email);
-      done();
+    it('catches invalid passwords', function (done) {
+      user = new User(invalidPassword);
+      user.save(function (err, user) {
+        assert.equal(err.message, 'Validation failed');
+        assert.isDefined(err.errors.password);
+        done();
+      });
     });
-  });
 
-  it('catches blank emails', function (done) {
-    user = new User(blankEmail);
-    user.save(function (err, user) {
-      assert.equal(err.message, 'Validation failed');
-      assert.isDefined(err.errors.email);
-      done();
+    it('catches undefined emails', function (done) {
+      user = new User(undefinedEmail);
+      user.save(function (err, user) {
+        assert.equal(err.message, 'Validation failed');
+        assert.isDefined(err.errors.email);
+        done();
+      });
     });
-  });
 
-  it('catches blank passwords', function (done) {
-    user = new User(blankPassword);
-    user.save(function (err, user) {
-      assert.equal(err.message, 'Validation failed');
-      assert.isDefined(err.errors.password);
-      done();
+    it('catches null emails', function (done) {
+      user = new User(nullEmail);
+      user.save(function (err, user) {
+        assert.equal(err.message, 'Validation failed');
+        assert.isDefined(err.errors.email);
+        done();
+      });
     });
-  });
 
-  it('save valid user', function (done) {
-    user = new User(valid);
-    user.save(function (err, user) {
-      assert.isDefined(user._id);
-      done();
+    it('catches blank emails', function (done) {
+      user = new User(blankEmail);
+      user.save(function (err, user) {
+        assert.equal(err.message, 'Validation failed');
+        assert.isDefined(err.errors.email);
+        done();
+      });
+    });
+
+    it('catches blank passwords', function (done) {
+      user = new User(blankPassword);
+      user.save(function (err, user) {
+        assert.equal(err.message, 'Validation failed');
+        assert.isDefined(err.errors.password);
+        done();
+      });
     });
   });
 });
