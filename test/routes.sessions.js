@@ -21,6 +21,19 @@ describe('sessions', function () {
     user.save(done);
   });
 
+  describe('it does not get session for unauthed', function (done) {
+    it('show', function (done) {
+      session.
+        get('/session').
+        set('X-Requested-With', 'XMLHttpRequest').
+        set('Accept', 'application/json').
+        end(function (err, res) {
+          assert.equal(res.status, 403, 'forbidden');
+          done();
+        });
+    });
+  });
+
   describe('post', function () {
     it('create', function (done) {
       session.
@@ -35,7 +48,7 @@ describe('sessions', function () {
     });
   });
 
-  describe('get', function () {
+  describe('get valid session', function () {
     before(function (done) {
       session.
         post('/sessions').
@@ -51,7 +64,7 @@ describe('sessions', function () {
         set('X-Requested-With', 'XMLHttpRequest').
         set('Accept', 'application/json').
         end(function (err, res) {
-          assert.equal(res.status, 200, 'retrieve session');
+          assert.equal(res.status, 200, 'success');
           assert.isDefined(res.body._id, '_id returned');
           done();
         });
