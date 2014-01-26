@@ -35,27 +35,55 @@ describe('sessions', function () {
   });
 
   describe('post', function () {
-    it('create', function (done) {
+    it('does not create for invalid auth', function (done) {
+      var invalidCreds = { email: creds.email, password: chance.string() };
+
       session.
         post('/sessions').
-        send(creds).
+        send(invalidCreds).
         set('X-Requested-With', 'XMLHttpRequest').
         set('Accept', 'application/json').
         end(function (err, res) {
-          assert.equal(res.status, 200, 'success');
+          assert.equal(res.status, 403, 'forbidden');
+          assert.deepEqual(res.body, { message: 'Invalid email or password' });
+          done();
+        });
+    });
+
+    it('does not create for missing email', function (done) {
+      var missingEmail = { email: 'foo@bar.com', password: chance.string() };
+
+      session.
+        post('/sessions').
+        send(missingEmail).
+        set('X-Requested-With', 'XMLHttpRequest').
+        set('Accept', 'application/json').
+        end(function (err, res) {
+          assert.equal(res.status, 403, 'forbidden');
+          assert.deepEqual(res.body, { message: 'Email not found' });
           done();
         });
     });
   });
 
-  describe('get valid session', function () {
+  describe('signed in', function () {
+    var sessionId;
+
     before(function (done) {
       session.
         post('/sessions').
         send(creds).
         set('X-Requested-With', 'XMLHttpRequest').
         set('Accept', 'application/json').
-        end(done);
+        end(function (err, res) {
+          sessionId = res.body._id;
+          done();
+        });
+    });
+
+    it('created valid session', function (done) {
+      assert.isDefined(sessionId, 'success');
+      done();
     });
 
     it('show', function (done) {
@@ -69,5 +97,17 @@ describe('sessions', function () {
           done();
         });
     });
+
+    it('destroy', function (done) {
+      session.
+        del('/sessions/' + sessionId).
+        set('X-Requested-With', 'XMLHttpRequest').
+        set('Accept', 'application/json').
+        end(function (err, res) {
+          assert.equal(res.status, 200, 'signed out');
+          done();
+        });
+    });
   });
+
 });
