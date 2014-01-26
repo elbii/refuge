@@ -1,16 +1,19 @@
 {
   "name": "refuge",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "dependencies": {
-    "requirejs-text": "~2.0.6",
-    "requirejs": "~2.1.6",
-    "backbone": "~1.0.x",
-    "jquery": "~2.0.x",
-    "bootstrap": "~3.0.x",
+    "requirejs-text": "*",
+    "requirejs": "*",
+    "backbone": "*",
+    "jquery": "*",
     "jQuery.serializeObject": "*",
-    "underscore": "~1.4.4",
+    "underscore": "*",
     "underscore.string": "*",
     "sjcl": "*"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "chai": "*"
   },
   "ignore": [
     "**/.*",

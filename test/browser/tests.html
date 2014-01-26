@@ -8,8 +8,9 @@
     <div id="mocha"></div>
     <script src="mocha.js"></script>
     <script>mocha.setup('bdd')</script>
-    <script src="my-tests.js"></script>
+    <script src="refuge.js"></script>
     <script>
+      mocha.checkLeaks();
       mocha.run();
     </script>
   </body>
