@@ -19,16 +19,23 @@ module.exports = function (grunt) {
           'underscore.js': 'underscore/underscore.js'
         }
       },
-      dev: {
+      devJS: {
         options: {
-          destPrefix: 'test/browser',
+          destPrefix: 'test/browser/js/vendor',
         },
         files: {
           'mocha.js': 'mocha/mocha.js',
-          'mocha.css': 'mocha/mocha.css',
           'chai.js': 'chai/chai.js'
         }
-      }
+      },
+			devCSS: {
+        options: {
+          destPrefix: 'test/browser/css',
+        },
+        files: {
+          'mocha.css': 'mocha/mocha.css'
+        }
+			}
     }
   });
 

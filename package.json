@@ -25,7 +25,6 @@
   "devDependencies": {
     "grunt-bowercopy": "*",
     "grunt": "*",
-    "karma": "*",
     "istanbul": "*",
     "supertest": "*",
     "nodemon": "*",
