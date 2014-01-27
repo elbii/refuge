@@ -16,7 +16,7 @@ npm-install:
 	npm install
 
 bower-install:
-	bower install
+	grunt bowercopy
 
 cov:
 	PORT=4000 NODE_ENV=test ./node_modules/istanbul/lib/cli.js cover \
