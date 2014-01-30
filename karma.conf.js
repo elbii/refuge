@@ -13,7 +13,7 @@ module.exports = function(config) {
 
 
     preprocessors: {
-      'lib/public/js/**/*.js': 'coverage'
+      'lib/public/js/!(vendor)/**/*.js': 'coverage'
     },
 
 
