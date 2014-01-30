@@ -32,7 +32,7 @@
     "karma": "*",
     "karma-mocha": "*",
     "karma-coverage": "*",
-    "karma-chai": "*",
+    "karma-sinon-chai": "*",
     "sinon": "*",
     "chai": "*",
     "chance": "*"

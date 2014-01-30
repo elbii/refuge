@@ -1,10 +1,17 @@
+// Sanity tests
+
 define([
 	'app'
 ], function (App) {
-	describe('testing assert', function () {
+	describe('app properly initializes', function () {
 		it('should run test', function () {
-      // sanity check
       assert.isDefined(App);
 		});
+
+    it('initializes', function () {
+      var spy = sinon.spy($, 'ajax');
+      App.initialize();
+      assert.equal(spy.called, true);
+    });
 	});
 });

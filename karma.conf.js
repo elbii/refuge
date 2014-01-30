@@ -9,7 +9,7 @@ module.exports = function(config) {
 
 
     // frameworks to use
-    frameworks: ['mocha', 'requirejs', 'chai'],
+    frameworks: ['mocha', 'requirejs', 'sinon-chai'],
 
 
     preprocessors: {
