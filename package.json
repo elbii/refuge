@@ -29,7 +29,10 @@
     "supertest": "*",
     "nodemon": "*",
     "mocha": "*",
-    "mocha-phantomjs": "*",
+    "karma": "*",
+    "karma-mocha": "*",
+    "karma-coverage": "*",
+    "karma-chai": "*",
     "sinon": "*",
     "chai": "*",
     "chance": "*"

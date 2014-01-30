@@ -12,7 +12,6 @@
     "sjcl": "*"
   },
   "devDependencies": {
-    "mocha": "*",
     "chai": "*"
   },
   "ignore": [

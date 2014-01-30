@@ -5,6 +5,10 @@ test: test-all
 test-all:
 	PORT=4000 NODE_ENV=test ./node_modules/mocha/bin/mocha --check-leaks
 
+test-browser:
+	./node_modules/mocha-phantomjs/bin/mocha-phantomjs test/browser/tests.html\
+	 	-R html-cov
+
 test-watch:
 	PORT=4000 NODE_ENV=test ./node_modules/mocha/bin/mocha --check-leaks --watch
 

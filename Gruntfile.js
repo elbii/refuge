@@ -24,18 +24,10 @@ module.exports = function (grunt) {
           destPrefix: 'test/browser/js/vendor',
         },
         files: {
-          'mocha.js': 'mocha/mocha.js',
-          'chai.js': 'chai/chai.js'
+          'chai.js': 'chai/chai.js',
+          'requirejs-text.js': 'requirejs-text/text.js'
         }
-      },
-			devCSS: {
-        options: {
-          destPrefix: 'test/browser/css',
-        },
-        files: {
-          'mocha.css': 'mocha/mocha.css'
-        }
-			}
+      }
     }
   });
 
