@@ -11,9 +11,6 @@
     "underscore.string": "*",
     "sjcl": "*"
   },
-  "devDependencies": {
-    "chai": "*"
-  },
   "ignore": [
     "**/.*",
     "node_modules",

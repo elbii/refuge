@@ -19,10 +19,10 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-			'test/browser/js/main.js',
+			'test/browser/main.js',
 			{ pattern: 'lib/public/js/**/*.js', included: false },
 			{ pattern: 'lib/public/templates/**/*.mtpl', included: false },
-			{ pattern: 'test/browser/**/*.js', included: false }
+			{ pattern: 'test/browser/*.js', included: false }
     ],
 
 

@@ -18,15 +18,6 @@ module.exports = function (grunt) {
           'underscore.string.js': 'underscore.string/lib/underscore.string.js',
           'underscore.js': 'underscore/underscore.js'
         }
-      },
-      devJS: {
-        options: {
-          destPrefix: 'test/browser/js/vendor',
-        },
-        files: {
-          'chai.js': 'chai/chai.js',
-          'requirejs-text.js': 'requirejs-text/text.js'
-        }
       }
     }
   });

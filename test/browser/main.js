@@ -1,7 +1,6 @@
 var tests = [];
 for (var file in window.__karma__.files) {
-	if (/\-test\.js$/.test(file)) {
-		console.log(file);
+	if (/test\/browser\//.test(file) && !/main.js$/.test(file)) {
 		tests.push(file);
 	}
 }
