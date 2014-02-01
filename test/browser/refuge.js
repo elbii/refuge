@@ -3,7 +3,7 @@
 define([
 	'app'
 ], function (App) {
-	describe('app properly initializes', function () {
+	describe('app is sane', function () {
 		it('should run test', function () {
       assert.isDefined(App);
 		});
