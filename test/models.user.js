@@ -1,7 +1,10 @@
 var assert = require('chai').assert
   , User = require('../lib/models/user').model
   , Credential = require('../lib/models/credential').model
-  , Chance = require('chance');
+  , Chance = require('chance')
+  , mongoose = require('mongoose')
+  , connection = mongoose.createConnection('localhost',
+    'refuge_' + (process.env.NODE_ENV || 'test'));
 
 describe('user', function () {
   var chance = new Chance()
@@ -13,6 +16,14 @@ describe('user', function () {
       }
     , user;
 
+  before(function (done) {
+    connection.db.dropDatabase(done);
+  });
+
+  before(function (done) {
+    User.ensureIndexes(done);
+  });
+
   describe('valid user', function () {
     before(function (done) {
       user = new User(valid);
@@ -22,6 +33,16 @@ describe('user', function () {
     it('saved valid user', function (done) {
       assert.isDefined(user._id);
       done();
+    });
+
+    it('should not allow duplicate emails', function (done) {
+      var dupeUser = new User(valid);
+
+      // chai's throws assertion is problematic here
+      dupeUser.save(function (err) {
+        assert.match(err.message, /11000/);
+        done();
+      });
     });
 
     describe('credentials relation', function () {

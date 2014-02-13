@@ -1,24 +1,13 @@
 <div class='navbar-inner'>
-  <a class='brand' href='/'>Refuge</a>
-  <ul class='nav pull-left'>
+  <a href='/'>Refuge</a>
+  <ul>
     <% if (session && session.has('user')) { %>
       <li><a href='/credentials'>Credentials</a></li>
-    <% } %>
-  </ul>
-  <ul class='nav pull-right'>
-    <% if (session && session.has('user')) { %>
-      <li class='dropdown'>
-        <a class='dropdown-toggle' data-toggle='dropdown'>
-          <%= session.get('user').email %>
-          <b class='caret'></b>
-        </a>
-        <ul class='dropdown-menu'>
-          <li><a href='account'>Your account</a></li>
-          <li><a data-action='signOut'>Sign out</a></li>
-        </ul>
-      </li>
+      <li><a href='account'>Your account</a></li>
+      <li><a data-action='signOut'>Sign out</a></li>
     <% } else { %>
-      <li><a data-action='renderSignIn'>Sign in</a></li>
+      <li><a data-action='signIn'>Sign in</a></li>
+      <li><a data-action='signUp'>Sign up</a></li>
     <% } %>
   </ul>
 </div>

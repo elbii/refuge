@@ -1,12 +1,12 @@
 <div>
   <button type='button' data-action='dispose'>&times;</button>
-  <h3>Sign in</h3>
+  <h3>Sign up</h3>
 </div>
 
 <div>
   <div id='modal-alerts'></div>
 
-  <!-- Sign in form -->
+  <!-- Sign up form -->
   <form>
     <fieldset>
       <!-- Email -->
@@ -25,5 +25,6 @@
 </div>
 
 <div>
-  <button data-action='submit'>Sign in</button>
+  <button data-action='submit'>Sign up</button>
 </div>
+

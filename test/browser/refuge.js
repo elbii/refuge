@@ -1,16 +1,12 @@
 // Sanity tests
 
 define([
-	'app'
-], function (App) {
+	'refuge'
+], function (Refuge) {
 	describe('app is sane', function () {
-		it('should run test', function () {
-      assert.isDefined(App);
-		});
-
     it('initializes', function () {
       var spy = sinon.spy($, 'ajax');
-      App.initialize();
+      Refuge.initialize();
       assert.equal(spy.called, true);
     });
 	});

@@ -24,7 +24,7 @@ describe('users', function () {
       password: chance.string({ length: 9 })
     });
 
-    invalidUserEmail = new User({
+   invalidUserEmail = new User({
       email: 'foobar',
       password: chance.string({ length: 9 })
     });
