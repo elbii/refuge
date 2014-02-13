@@ -3,7 +3,7 @@
   <ul>
     <% if (session && session.has('user')) { %>
       <li><a href='/credentials'>Credentials</a></li>
-      <li><a href='account'>Your account</a></li>
+      <li><a href='/account'>Your account</a></li>
       <li><a data-action='signOut'>Sign out</a></li>
     <% } else { %>
       <li><a data-action='signIn'>Sign in</a></li>
