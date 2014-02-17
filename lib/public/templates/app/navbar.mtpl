@@ -1,7 +1,7 @@
 <div class='navbar-inner'>
   <a href='/'>Refuge</a>
   <ul>
-    <% if (session && session.has('user')) { %>
+    <% if (State.user) { %>
       <li><a href='/credentials'>Credentials</a></li>
       <li><a href='/account'>Your account</a></li>
       <li><a data-action='signOut'>Sign out</a></li>

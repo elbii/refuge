@@ -17,8 +17,15 @@
 
       <!-- Password -->
       <div>
-        <label for='inputPassword' class='control-label'>Password</label>
+        <label for='inputPassword'>Password</label>
         <input id='inputPassword' type='password' name='password' placeholder='Password'>
+      </div>
+
+      <!-- Master Password -->
+      <div>
+        <label for='inputMasterPassword'>Master Password</label>
+        <input id='inputMasterPassword' type='password' name='masterPassword'
+          placeholder='Master Password'>
       </div>
     </fieldset>
   </form>
@@ -27,4 +34,3 @@
 <div>
   <button data-action='submit'>Sign up</button>
 </div>
-

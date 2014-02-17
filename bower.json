@@ -9,7 +9,7 @@
     "jQuery.serializeObject": "*",
     "underscore": "*",
     "underscore.string": "*",
-    "sjcl": "*"
+    "sjcl": "git://github.com/elbii/sjcl.git#1.0.0-ecc"
   },
   "ignore": [
     "**/.*",
