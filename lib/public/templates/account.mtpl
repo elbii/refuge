@@ -25,19 +25,70 @@
           </div>
         </div>
 
-        <button type='button' class='btn btn-primary pull-right' data-action='submit'>
+        <button type='button' class='btn btn-primary pull-right'
+          data-action='submit'>
+
           Save
         </button>
       </fieldset>
 
-      <button type='button' class='btn btn-danger' data-action='confirmDeleteAccount'>Delete account forever</button>
     </form>
   </div>
   <div class='col-sm-6'>
     <form class='form-horizontal'>
       <fieldset>
-        <legend>Import credentials</legend>
-        <button type='button' class='btn btn-default'>Import...</button>
+        <legend>Import / Export</legend>
+        <div class='row'>
+          <div class='col-sm-4'>
+            <button type='button' class='btn btn-default'>
+              Import credentials
+            </button>
+          </div>
+          <div class='col-sm-8'>
+            <p>
+              Import a KeePass, LastPass, or 1Password database.
+            </p>
+          </div>
+        </div>
+        <br>
+        <div class='row'>
+          <div class='col-sm-4'>
+            <button type='button' class='btn btn-default'>
+              Export credentials
+            </button>
+          </div>
+          <div class='col-sm-8'>
+            <p>
+              Export your credentials to zipped JSON.
+            </p>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+
+<div class='row'>
+  <div class='col-sm-6'>
+    <form class='form-horizontal'>
+      <fieldset>
+        <legend>Sessions</legend>
+        <button type='button' class='btn btn-danger'
+          data-action='deleteAllSessions'>Delete all sessions</button>
+      </fieldset>
+    </form>
+  </div>
+  <div class='col-sm-6'>
+    <form class='form-horizontal'>
+      <fieldset>
+        <legend>Delete account</legend>
+        <p>
+          <strong>Heads up!</strong>
+          Deleting your account is permanent and cannot be undone.
+          Your data will forever be purged from our system!
+        </p>
+        <button type='button' class='btn btn-danger'
+          data-action='confirmDeleteAccount'>Delete account forever</button>
       </fieldset>
     </form>
   </div>
