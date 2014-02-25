@@ -1,41 +1,44 @@
 <h1>Your Account</h1>
 
-<form>
-  <fieldset>
-    <legend>Edit account details</legend>
-    <div>
-      <label for='inputEmail'>Email:</label>
-      <div>
-        <input id='inputEmail' type='text' name='email'
-          value='<%= this.model.get("email") %>'>
-      </div>
-    </div>
-    <div>
-      <label for='inputAccountPassword'>Account Password:</label>
-      <div>
-        <input id='inputAccountPassword' type='password' name='accountPassword'
-          placeholder='New password'>
-      </div>
-      <div>
-        <input id='inputAccountPasswordConfirmation' type='password' name='accountPasswordConfirmation'
-          placeholder='New password again'>
-      </div>
-    </div>
-    <div>
-      <label for='inputMasterPassword'>Master Password:</label>
-      <div>
-        <input id='inputMasterPassword' type='password' name='masterPassword'
-          placeholder='New password'>
-      </div>
-      <div>
-        <input id='inputMasterPasswordConfirmation' type='password' name='masterPasswordConfirmation'
-          placeholder='New password again'>
-      </div>
-    </div>
-    <button data-action='submit'>Save</button>
-  </fieldset>
-  <fieldset>
-    <legend>Delete account</legend>
-    <button data-action='confirmDeleteAccount'>Delete account forever</button>
-  </fieldset>
-</form>
+<div class='row'>
+  <div class='col-sm-6'>
+    <form class='form-horizontal'>
+      <fieldset>
+        <legend>Edit account details</legend>
+        <!-- Email -->
+        <div class='form-group'>
+          <label for='inputEmail' class='control-label col-sm-3'>Email:</label>
+          <div class='col-sm-9'>
+            <input class='form-control' id='inputEmail' type='text' name='email'
+              value='<%= this.model.get("email") %>'>
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div class='form-group'>
+          <label for='inputPassword' class='control-label col-sm-3'>
+            Password:
+          </label>
+          <div class='col-sm-9'>
+            <input class='form-control' id='inputAccountPassword' type='password'
+              name='accountPassword' placeholder='New password'>
+          </div>
+        </div>
+
+        <button type='button' class='btn btn-primary pull-right' data-action='submit'>
+          Save
+        </button>
+      </fieldset>
+
+      <button type='button' class='btn btn-danger' data-action='confirmDeleteAccount'>Delete account forever</button>
+    </form>
+  </div>
+  <div class='col-sm-6'>
+    <form class='form-horizontal'>
+      <fieldset>
+        <legend>Import credentials</legend>
+        <button type='button' class='btn btn-default'>Import...</button>
+      </fieldset>
+    </form>
+  </div>
+</div>
