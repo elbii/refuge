@@ -1,4 +1,6 @@
-<div>
-  <button type='button'>&times;</button>
+<div class='alert alert-danger'>
+  <button type='button' data-dismiss='alert' class='close' aria-hidden='true'>
+    &times;
+  </button>
   <strong>Error:</strong> <%= message %>
 </div>

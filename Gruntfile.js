@@ -4,11 +4,21 @@ module.exports = function (grunt) {
       options: {
         clean: true
       },
+      css: {
+        options: {
+          destPrefix: 'lib/public/css/vendor'
+        },
+        files: {
+          'bootstrap.css': 'bootstrap/dist/css/bootstrap.css',
+          'bootstrap-theme.css': 'bootstrap/dist/css/bootstrap-theme.css'
+        }
+      },
       libs: {
         options: {
           destPrefix: 'lib/public/js/vendor'
         },
         files: {
+          'bootstrap.js': 'bootstrap/dist/js/bootstrap.js',
           'backbone.js': 'backbone/backbone.js',
           'jQuery.serializeObject.js': 'jQuery.serializeObject/jQuery.serializeObject.js',
           'jquery.js': 'jquery/jquery.js',

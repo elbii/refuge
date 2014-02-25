@@ -5,6 +5,7 @@
     "requirejs-text": "*",
     "requirejs": "*",
     "backbone": "*",
+    "bootstrap": "~3.1.x",
     "jquery": "*",
     "jQuery.serializeObject": "*",
     "underscore": "*",
