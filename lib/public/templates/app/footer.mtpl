@@ -1,9 +1,7 @@
-<div class='row'>
-  <div class='col-sm-12'>
-    <footer>
-      <p class='text-center'>
-        © 2013 <a data-bypass href='http://elbii.com'>Elbii LLC</a>
-      </p>
-    </footer>
-  </div>
+<div class='col-sm-12'>
+  <footer>
+    <p class='text-center'>
+      © 2013 <a data-bypass href='http://elbii.com'>Elbii LLC</a>
+    </p>
+  </footer>
 </div>
