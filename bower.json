@@ -6,6 +6,7 @@
     "requirejs": "*",
     "backbone": "*",
     "bootstrap": "~3.1.x",
+    "jsSHA": "*",
     "jquery": "*",
     "jQuery.serializeObject": "*",
     "underscore": "*",
