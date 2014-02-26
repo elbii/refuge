@@ -32,6 +32,17 @@ describe('sessions', function () {
           done();
         });
     });
+
+    it('index', function (done) {
+      session.
+        get('/sessions').
+        set('X-Requested-With', 'XMLHttpRequest').
+        set('Accept', 'application/json').
+        end(function (err, res) {
+          assert.equal(res.status, 403, 'forbidden');
+          done();
+        });
+    });
   });
 
   describe('post', function () {
@@ -94,6 +105,20 @@ describe('sessions', function () {
         end(function (err, res) {
           assert.equal(res.status, 200, 'success');
           assert.isDefined(res.body._id, '_id returned');
+          done();
+        });
+    });
+
+    it('index', function (done) {
+      session.
+        get('/sessions').
+        set('X-Requested-With', 'XMLHttpRequest').
+        set('Accept', 'application/json').
+        end(function (err, res) {
+          console.log(res.body);
+          assert.equal(res.status, 200, 'success');
+          assert.isArray(res.body, 'sessions array returned');
+          assert.equal(res.body[0]._id, sessionId);
           done();
         });
     });

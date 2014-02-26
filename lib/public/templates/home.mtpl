@@ -1,1 +1,3 @@
-<h1>Welcome to Refuge!</h1>
+<div class='jumbotron'>
+  <h1>Welcome to Refuge!</h1>
+</div>
