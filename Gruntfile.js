@@ -22,7 +22,7 @@ module.exports = function (grunt) {
           'bootstrap.js': 'bootstrap/dist/js/bootstrap.js',
           'backbone.js': 'backbone/backbone.js',
           'jQuery.serializeObject.js': 'jQuery.serializeObject/jQuery.serializeObject.js',
-          'jquery.js': 'jquery/jquery.js',
+          'jquery.js': 'jquery/dist/jquery.js',
           'requirejs-text.js': 'requirejs-text/text.js',
           'require.js': 'requirejs/require.js',
           'sjcl.js': 'sjcl/sjcl.js',
