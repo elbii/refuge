@@ -30,4 +30,3 @@ cov:
 clean:
 	rm -rf coverage
 	rm -rf node_modules
-	rm -rf lib/public/js/vendor
