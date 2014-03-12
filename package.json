@@ -5,7 +5,8 @@
   "description": "Open-source web-based password manager",
   "version": "0.0.1",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "make cov"
   },
   "bin": {
     "refuge": "./bin/refuge"

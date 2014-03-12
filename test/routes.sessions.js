@@ -115,7 +115,6 @@ describe('sessions', function () {
         set('X-Requested-With', 'XMLHttpRequest').
         set('Accept', 'application/json').
         end(function (err, res) {
-          console.log(res.body);
           assert.equal(res.status, 200, 'success');
           assert.isArray(res.body, 'sessions array returned');
           assert.equal(res.body[0]._id, sessionId);
