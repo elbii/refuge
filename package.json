@@ -17,9 +17,9 @@
   },
   "dependencies": {
     "validator": "*",
-    "express": "*",
+    "express": "~3.4.8",
     "hiredis": "*",
-    "connect-redis": "*",
+    "connect-redis": "1.4.7",
     "mongoose": "*"
   },
   "devDependencies": {
@@ -29,14 +29,16 @@
     "supertest": "*",
     "nodemon": "*",
     "mocha": "*",
-    "karma": "*",
+    "karma": "~0.10",
     "karma-mocha": "*",
     "karma-coverage": "*",
     "karma-sinon-chai": "*",
     "karma-osx-reporter": "*",
     "sinon": "*",
     "chai": "*",
-    "chance": "*"
+    "chance": "*",
+    "recursive-readdir": "0.0.2",
+    "fsevents": "^0.2.0"
   },
   "optionalDependencies": {
     "glob": "~3.2.3"
