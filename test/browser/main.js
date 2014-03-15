@@ -20,6 +20,7 @@ requirejs.config({
   },
 
   paths: {
+    bootstrap: 'vendor/bootstrap',
     text: 'vendor/requirejs-text',
     jquery: 'vendor/jquery',
     underscore: 'vendor/underscore',
@@ -27,6 +28,7 @@ requirejs.config({
     backbone: 'vendor/backbone',
     serializeObject: 'vendor/jQuery.serializeObject',
     sjcl: 'vendor/sjcl',
+    sha512: 'vendor/sha512',
     templates: '../templates',
     css: '../css'
   },
