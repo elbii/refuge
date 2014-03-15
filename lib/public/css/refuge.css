@@ -1,3 +1,15 @@
 a:hover {
   cursor: pointer;
 }
+
+.password-strength-weak {
+  width: 33%;
+}
+
+.password-strength-medium {
+  width: 66%;
+}
+
+.password-strength-strong {
+  width: 100%;
+}
