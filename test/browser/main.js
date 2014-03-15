@@ -28,7 +28,6 @@ requirejs.config({
     backbone: 'vendor/backbone',
     serializeObject: 'vendor/jQuery.serializeObject',
     sjcl: 'vendor/sjcl',
-    sha512: 'vendor/sha512',
     templates: '../templates',
     css: '../css'
   },

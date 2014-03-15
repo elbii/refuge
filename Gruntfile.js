@@ -18,7 +18,6 @@ module.exports = function (grunt) {
           destPrefix: 'lib/public/js/vendor'
         },
         files: {
-          'sha512.js': 'jsSHA/src/sha512.js',
           'bootstrap.js': 'bootstrap/dist/js/bootstrap.js',
           'backbone.js': 'backbone/backbone.js',
           'jQuery.serializeObject.js': 'jQuery.serializeObject/jQuery.serializeObject.js',
